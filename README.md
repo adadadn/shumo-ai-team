@@ -98,6 +98,8 @@
 | math-review | 评委视角风险审查：六评分维度映射、扣分风险标注、评委追问准备 |
 | math-consistency | 摘要/正文/表图/附录/登记表跨材料数值-单位-场景一致性审查 |
 
+> 每个技能的原始来源链接与来源说明，见文末【九、Skill 来源汇总表格】。
+
 ## 五、使用与启动步骤
 
 1. **部署配置**：按 `TEAM-PACK.md` §10 部署检查清单，在新工作区建立 `.agent-team/` 常驻层（TEAM-PACK、roster、rules、runbook、skills 归档）；
@@ -129,4 +131,39 @@
 
 ---
 
-*本系统由 AI 多角色协作搭建与验证；配置版本 v1.0（对应团队花名册 v2.7 快照）。*
+## 九、Skill 来源汇总表格（v1.1 来源核查）
+
+> 判定规则：外部素材生成的 Skill 附真实原始 URL（经 git ls-remote 实测可达，无编造）；用户手动自定义编写的 Skill 标注【来源：用户手动自定义编写】。详细信息见 `TEAM-PACK.md` §5.1 来源核查清单。
+
+| Skill 名称 | 来源链接 / 来源说明 |
+|---|---|
+| agent-team | 【原始来源链接丢失】部署前已存在于工作区的编排技能（86 行原文归档），原始分发渠道未记录；如可提供出处则补录 |
+| nature-academic-search | https://github.com/Yuan1z0825/nature-skills （skills/nature-academic-search，main） |
+| nature-ref-verifier | https://github.com/Yuan1z0825/nature-skills （skills/nature-ref-verifier，main） |
+| nature-figure | https://github.com/Yuan1z0825/nature-skills （skills/nature-figure，main；依赖 skills/nature-shared） |
+| paper-lookup | https://github.com/K-Dense-AI/scientific-agent-skills （skills/paper-lookup，main） |
+| exploratory-data-analysis | https://github.com/K-Dense-AI/scientific-agent-skills （skills/exploratory-data-analysis，main） |
+| statistical-analysis | https://github.com/K-Dense-AI/scientific-agent-skills （skills/statistical-analysis，main） |
+| statsmodels | https://github.com/K-Dense-AI/scientific-agent-skills （skills/statsmodels，main） |
+| scikit-learn | https://github.com/K-Dense-AI/scientific-agent-skills （skills/scikit-learn，main） |
+| pymoo | https://github.com/K-Dense-AI/scientific-agent-skills （skills/pymoo，main） |
+| docx | https://github.com/K-Dense-AI/scientific-agent-skills （skills/docx，main；Anthropic 原版专有许可，仅内部使用） |
+| scipilot-figure-skill | https://github.com/Haojae/scipilot-figure-skill （main，仓库根即技能目录） |
+| math-hub | https://github.com/capwitf/My-MathModeling-skills （math-hub，master） |
+| math-compliance | https://github.com/capwitf/My-MathModeling-skills （math-compliance，master） |
+| math-problem-reader | https://github.com/capwitf/My-MathModeling-skills （math-problem-reader，master） |
+| math-model | https://github.com/capwitf/My-MathModeling-skills （math-model，master） |
+| math-code | https://github.com/capwitf/My-MathModeling-skills （math-code，master） |
+| math-abstract | https://github.com/capwitf/My-MathModeling-skills （math-abstract，master） |
+| math-latex | https://github.com/capwitf/My-MathModeling-skills （math-latex，master） |
+| math-table | https://github.com/capwitf/My-MathModeling-skills （math-table，master） |
+| math-verifier | https://github.com/capwitf/My-MathModeling-skills （math-verifier，master） |
+| math-review | https://github.com/capwitf/My-MathModeling-skills （math-review，master） |
+| math-consistency | https://github.com/capwitf/My-MathModeling-skills （math-consistency，master） |
+| shumo-paper-paradigm | 【来源：用户手动自定义编写】（总指挥直接交付；全文收录于 TEAM-PACK.md 附录 A，文末附官方获奖论文展示页真实学习来源链接） |
+| math-figure（依赖资产） | https://github.com/capwitf/My-MathModeling-skills （math-figure，master；归档时剔除约 25MB 示例图库） |
+| nature-shared（依赖资产） | https://github.com/Yuan1z0825/nature-skills （skills/nature-shared，main） |
+
+---
+
+*本系统由 AI 多角色协作搭建与验证；配置版本 v1.1（对应团队花名册 v2.7 快照；v1.1 = Skill 来源标注全量核查补全）。*

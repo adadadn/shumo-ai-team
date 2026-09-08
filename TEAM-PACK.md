@@ -1,6 +1,6 @@
 # 数模多角色 AI 团队 · 可复用配置包（CUMCM 常备制）
 
-> **包版本**：v1.0（对应团队花名册 v2.7 全量快照）
+> **包版本**：v1.1（对应团队花名册 v2.7 全量快照；v1.1 增补：24 项 Skill 来源标注全量核查补全，4 个外部来源仓库已经 git ls-remote 实测可达）
 > **适用**：全国大学生数学建模竞赛（国赛/高教社杯）及同类数模竞赛；任何支持"主会话 + 独立子会话"机制的 AI 编排环境（如 DeepSeek Harness 的 subagent/send_message/list_agents 原语，其他平台按等价机制映射）。
 > **性质**：纯文本配置。不含任何密钥、令牌、账号、个人隐私与本地绝对路径；外部技能归档通过第 6 节来源清单从公开仓库重新拉取即可复原。
 > **角色称谓**：总指挥 = 人类决策者；R0 总控 = AI 管理者（主会话，不 spawn）；R1–R8 = 独立子会话角色。
@@ -43,6 +43,8 @@
 name: agent-team
 description: 多Agent自主协同编排（Multi-Agent Team Orchestration）。当用户想让多个 agent 组队、分工协作完成一个任务，提到"多agent协同/协作"、"组建agent团队"、"让agent自主配合/自主推进"、"像团队一样干活"、multi-agent、agent crew、team of agents 时使用。把目标拆成管理/执行/验收三类角色，用消息传递让它们自主接力，用身份证、工作日志、决策快照保证可追溯、可并行、上下文不被污染。
 ---
+
+> 【Skill来源标注】**原始来源链接丢失**：本文档为部署前已存在于工作区的既有编排技能（86 行原文归档），作者与原始分发渠道未记录，故不附 URL（严禁编造链接）；若系总指挥手动编写或日后可提供原始出处，请告知后改标。
 
 # 多Agent自主协同（Agent Team）
 
@@ -283,6 +285,41 @@ spawn 后立即把返回的 agentId 写入 roster.md。
 
 **依赖资产（未挂载为角色技能）**：`math-figure/` 目录随 My-MathModeling-skills 包归档（SKILL.md + references + scripts + assets/chart-templates/paper_style.py），作为 math-code 图表门禁的引用资产；归档时**剔除其 25MB 生物论文示例图库** high-impact-templates。`nature-shared/` 共享包随 nature-skills 归档（nature-figure 运行依赖）。
 
+### 5.1 Skill 来源核查清单（v1.1 补全 · 24/24 已标注）
+
+> 类别判定规则：①外部素材生成的 Skill → 头部注释附真实原始 URL（无法找回则标【原始来源链接丢失】，严禁编造）；②用户手动自定义编写的 Skill → 标【来源：用户手动自定义编写】。下表"实测"列为部署时 git ls-remote 对来源仓库的实时校验结果。
+
+| # | Skill | 类别 | 来源标注 | 校验 |
+|---|---|---|---|---|
+| 1 | agent-team | 既有文档 | 【原始来源链接丢失】部署前已存在于工作区（86 行原文归档），原始分发渠道未记录 | ✅ 已标注；如总指挥可提供出处则补录 |
+| 2 | nature-academic-search | 外部 | https://github.com/Yuan1z0825/nature-skills （skills/nature-academic-search，main 分支） | ✅ ls-remote 实测可达 |
+| 3 | nature-ref-verifier | 外部 | 同上（skills/nature-ref-verifier） | ✅ 实测可达 |
+| 4 | nature-figure | 外部 | 同上（skills/nature-figure，依赖 skills/nature-shared） | ✅ 实测可达 |
+| 5 | paper-lookup | 外部 | https://github.com/K-Dense-AI/scientific-agent-skills （skills/paper-lookup，main 分支） | ✅ 实测可达 |
+| 6 | exploratory-data-analysis | 外部 | 同上（skills/exploratory-data-analysis） | ✅ 实测可达 |
+| 7 | statistical-analysis | 外部 | 同上（skills/statistical-analysis） | ✅ 实测可达 |
+| 8 | statsmodels | 外部 | 同上（skills/statsmodels） | ✅ 实测可达 |
+| 9 | scikit-learn | 外部 | 同上（skills/scikit-learn） | ✅ 实测可达 |
+| 10 | pymoo | 外部 | 同上（skills/pymoo） | ✅ 实测可达 |
+| 11 | docx | 外部 | 同上（skills/docx；Anthropic 原版，Proprietary 许可，仅内部使用） | ✅ 实测可达 |
+| 12 | scipilot-figure-skill | 外部 | https://github.com/Haojae/scipilot-figure-skill （main 分支，仓库根即技能目录） | ✅ ls-remote 实测可达 |
+| 13 | math-hub | 外部 | https://github.com/capwitf/My-MathModeling-skills （math-hub，master 分支） | ✅ ls-remote 实测可达 |
+| 14 | math-compliance | 外部 | 同上（math-compliance） | ✅ 实测可达 |
+| 15 | math-problem-reader | 外部 | 同上（math-problem-reader） | ✅ 实测可达 |
+| 16 | math-model | 外部 | 同上（math-model） | ✅ 实测可达 |
+| 17 | math-code | 外部 | 同上（math-code） | ✅ 实测可达 |
+| 18 | math-abstract | 外部 | 同上（math-abstract） | ✅ 实测可达 |
+| 19 | math-latex | 外部 | 同上（math-latex） | ✅ 实测可达 |
+| 20 | math-table | 外部 | 同上（math-table） | ✅ 实测可达 |
+| 21 | math-verifier | 外部 | 同上（math-verifier） | ✅ 实测可达 |
+| 22 | math-review | 外部 | 同上（math-review） | ✅ 实测可达 |
+| 23 | math-consistency | 外部 | 同上（math-consistency） | ✅ 实测可达 |
+| 24 | shumo-paper-paradigm | 用户自定义 | 【来源：用户手动自定义编写】（全文见附录 A；文末学习来源为教育部中国大学生在线获奖论文展示页真实链接） | ✅ 已标注 |
+| 资产 | math-figure（依赖资产） | 外部 | https://github.com/capwitf/My-MathModeling-skills （math-figure；剔除 high-impact-templates 图库） | ✅ 实测可达 |
+| 资产 | nature-shared（依赖资产） | 外部 | https://github.com/Yuan1z0825/nature-skills （skills/nature-shared） | ✅ 实测可达 |
+
+> 结论：**24 项挂载 Skill + 2 项依赖资产，来源标注 26/26 全量补全；无编造链接（4 个来源仓库均经 ls-remote 实时验证）。**
+
 ---
 
 ## 6. 外部 Skill 来源清单（重新部署拉取 manifest）
@@ -472,6 +509,8 @@ spawn 后立即把返回的 agentId 写入 roster.md。
 name: shumo-paper-paradigm
 description: 全国大学生数学建模竞赛（国赛/高教社杯）获奖论文写作范式。撰写、修改或润色数模竞赛论文（摘要、正文、模型、图表、参考文献、附录）时必须使用；内化了2024年国赛8篇获奖论文（A016/A163/B195/B196/C038/C063/C094/C234）的标准格式、行文语言与写作逻辑，写论文时自动遵循，无需用户再强调格式与措辞。也适用于美赛中文论文、校内数模选拔赛的中文论文。
 ---
+
+> 【Skill来源标注】**来源：用户手动自定义编写**（总指挥直接交付原文件，非外部素材直接生成；文末"学习来源"为教育部中国大学生在线 2024 国赛获奖论文展示页的真实链接，仅供溯源研读）。
 
 # 数模获奖论文写作范式（内部执行规范）
 
